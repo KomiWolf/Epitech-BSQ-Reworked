@@ -16,8 +16,9 @@
 static bool is_map(const char *line, const size_t file_index, bsq_t *bsq)
 {
     int i = 0;
+    int x = 0;
 
-    if (file_index < 1 || file_index > bsq->line_nb) {
+    if (file_index < 1 || file_index > bsq->line_nb + 1) {
         return false;
     }
     for (; line[i] != '\0'; i++) {
@@ -26,10 +27,10 @@ static bool is_map(const char *line, const size_t file_index, bsq_t *bsq)
         }
     }
     bsq->parsed_file_content[file_index - 1] = malloc(sizeof(char) * (i + 1));
-    for (int x = 0; x < i; x++) {
+    for (; line[x] != '\0'; x++) {
         bsq->parsed_file_content[file_index - 1][x] = line[x];
     }
-    bsq->parsed_file_content[file_index - 1][i] = '\0';
+    bsq->parsed_file_content[file_index - 1][x] = '\0';
     bsq->parsed_file_content[file_index] = NULL;
     return true;
 }
@@ -110,6 +111,7 @@ static int read_file(int fd, bsq_t *bsq)
     if (read(fd, buffer, sizeof(buffer)) == -1) {
         return -1;
     }
+    return 0;
 }
 
 static int check_file(char *file, bsq_t *bsq)

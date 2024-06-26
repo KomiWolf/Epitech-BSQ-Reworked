@@ -11,11 +11,9 @@
 typedef struct bsq_s {
     char **parsed_file_content;
     size_t line_nb;
-    int start_x;
-    int start_y;
-    int end_x;
-    int end_y;
-    int biggest_square;
+    size_t start_x;
+    size_t start_y;
+    size_t biggest_square;
 } bsq_t;
 
 #endif

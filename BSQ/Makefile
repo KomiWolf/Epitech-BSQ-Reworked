@@ -5,10 +5,11 @@
 ## Makefile
 ##
 
-SRC	=	./main.c				\
+SRC	=	./main.c						\
 \
-		./src/utils.c			\
-		./src/parse_arguments.c	\
+		./src/utils.c					\
+		./src/parse_arguments.c			\
+		./src/search_biggest_square.c	\
 \
 
 CC	=	gcc

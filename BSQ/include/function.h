@@ -12,9 +12,13 @@
 
     #include "struct.h"
 
-// !! PARSING !!
+//!! PARSING !!
 
 int parse_arguments(int ac, char **av, bsq_t *bsq);
+
+//!! SEARCH !!
+
+void search_biggest_square(bsq_t *bsq);
 
 //!! FREE !!
 
