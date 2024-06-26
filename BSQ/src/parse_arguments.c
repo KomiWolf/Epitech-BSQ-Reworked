@@ -18,19 +18,21 @@ static bool is_map(const char *line, const size_t file_index, bsq_t *bsq)
     int i = 0;
     int x = 0;
 
-    if (file_index < 1 || file_index > bsq->line_nb + 1) {
+    if (file_index < 1 || file_index > bsq->line_nb + 1)
         return false;
-    }
     for (; line[i] != '\0'; i++) {
-        if (line[i] != 'o' && line[i] != '.') {
+        if (line[i] != 'o' && line[i] != '.')
             return false;
-        }
     }
     bsq->parsed_file_content[file_index - 1] = malloc(sizeof(char) * (i + 1));
-    for (; line[x] != '\0'; x++) {
+    for (; line[x] != '\0'; x++)
         bsq->parsed_file_content[file_index - 1][x] = line[x];
-    }
     bsq->parsed_file_content[file_index - 1][x] = '\0';
+    if (file_index > 1) {
+        for (; bsq->parsed_file_content[file_index - 2][i]; i++);
+        if (i != x)
+            return false;
+    }
     bsq->parsed_file_content[file_index] = NULL;
     return true;
 }
