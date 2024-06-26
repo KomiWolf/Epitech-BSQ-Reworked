@@ -1,0 +1,8 @@
+.vscode/
+vgcore.*
+*.o
+*.a
+*.so
+test.*
+*.test
+bsq
